@@ -6,7 +6,8 @@ export default function Navbar(props) {
   const [mystyle, setMystyle] = useState({
     color:'dark',
     backgroundColor:'white',
-    text:'dark'
+    text:'dark',
+    ctext:'light',
   });
 
   const switchh = () => {
@@ -14,20 +15,22 @@ export default function Navbar(props) {
       setMystyle({
         color:'black',
         backgroundColor:'white',
-        text:'dark'
+        text:'dark',
+        ctext:'light',
       });
     }
     else{
       setMystyle({
         color:'white',
         backgroundColor:'black',
-        text:'light'
+        text:'light',
+        ctext:'dark'
       })
     }
 }
 
   return (
-    <nav className="navbar navbar-expand-lg"  style={{backgroundColor:mystyle.backgroundColor}}>
+    <nav className={"navbar navbar-expand-lg navbar-"+mystyle.ctext}  style={{backgroundColor:mystyle.backgroundColor}}>
     <a className="navbar-brand" href ="/" style={{color:mystyle.color}}>{props.title}</a>
 
 
