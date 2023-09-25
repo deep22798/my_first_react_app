@@ -3,35 +3,9 @@ import React,{useState} from 'react'
 
 export default function Navbar(props) {
 
-  const [mystyle, setMystyle] = useState({
-    color:'dark',
-    backgroundColor:'white',
-    text:'dark',
-    ctext:'light',
-  });
-
-  const switchh = () => {
-    if(mystyle.color=='white'){
-      setMystyle({
-        color:'black',
-        backgroundColor:'white',
-        text:'dark',
-        ctext:'light',
-      });
-    }
-    else{
-      setMystyle({
-        color:'white',
-        backgroundColor:'black',
-        text:'light',
-        ctext:'dark'
-      })
-    }
-}
-
   return (
-    <nav className={"navbar navbar-expand-lg navbar-"+mystyle.ctext}  style={{backgroundColor:mystyle.backgroundColor}}>
-    <a className="navbar-brand" href ="/" style={{color:mystyle.color}}>{props.title}</a>
+<nav class={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
+    <a className="navbar-brand" href ="/">{props.title}</a>
 
 
     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,14 +15,16 @@ export default function Navbar(props) {
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav mr-auto">
         <li className="nav-item active">
-          <a className="nav-link" href="/" style={{color:mystyle.color}}>Home</a>
+          <a className="nav-link" href="/">Home</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/" style={{color:mystyle.color}}>About</a>
+          <a className="nav-link" href="/">About</a>
         </li>
       </ul>
-      
-    <button type="button" onClick={switchh} className={"btn text-left btn-"+mystyle.text}>Switch to {mystyle.text} </button>
+      <div class={`form-check form-switch mx-3 text-${props.mode=='light'?'dark':'light'}`}>
+  <input class="form-check-input" onClick={props.switchh} type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
+  <label class="form-check-label" for="flexSwitchCheckDefault">Switch to Dark mode</label>
+</div>
     </div>
   </nav>
   )
